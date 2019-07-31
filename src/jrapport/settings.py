@@ -25,7 +25,7 @@ SECRET_KEY = '+$rt51y8=6!g9qz83jjs2%-apo2700irw)7%#mm#)uaz!8xsfo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.0.39','127.0.0.1']
 
 BOOTSTRAP4 = {
     'include_jquery': True,
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'datetimepicker',
     'reports',
     'search',
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [

@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>JRapport</title>
+    <title>Redigera</title>
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -15,7 +15,7 @@
         width: 30%;
       }
       #last {
-        border-bottom:2px solid black;
+        border-bottom:4px solid black;
       }
       #bg{
         background-color:red;
@@ -29,17 +29,16 @@
     </style>
 
   </head>
-
   <body>
     <nav class="navbar navbar-light bg-dark">
-	  <a class="navbar-brand" id="navpos" style="color:#F84F00;  font-family: Verdana;" href="/">JRapport</a>
-    <a href="{% url 'add_report' %}">Lägg till Rapport</a>
-	  {% include 'snippets\search_form.html' %}
-	</nav>
+      <a class="navbar-brand" id="navpos" style="color:#F84F00; font-family: Verdana;" href="/">JRapport</a>
+      <a href="{% url 'add_report' %}">Lägg till Rapport</a>
+      {% include 'snippets\home_search_form.html' %}
+    </nav>
 
     <div class="container">
-      	<table class="table table-striped">
-      	<thead class="thead-dark">
+      <table class="table table-striped">
+      <thead class="thead-dark">
         <tr>
           <th scope="col">Rapport Nr</th>
           <th scope="col">Avdelning</th>
@@ -49,11 +48,7 @@
           <th scope="col">Namn</th>
           <th scope="col">Anställning Nr</th>
           <th scope="col">Datum och tid</th>
-          <th scope="col">
-            <form action="{% url 'edit_report' %}">
-              <input class="btn btn-outline-warning" type="submit" value="Redigera"/>
-            </form>
-          </th>
+          <th scope="col"><a href="/" class="btn btn-outline-warning">Tillbaka</a></th>
         </tr>
       </thead>
       <tbody>
@@ -67,11 +62,15 @@
             <td><p>{{obj.namn}}</p></td>
             <td><p>{{obj.anstNr}}</p></td>
             <td><p>{{ obj.date|date:"d-m/Y - G:i:s" }}</p></td>
-            <td></td>
+            <td>
+              <form action="{% url 'delete_report' pk=obj.pk %}" method="POST">
+                {% csrf_token %}
+                <input class="btn btn-default btn-danger" type="submit" value="Radera"/>
+              </form>
+            </td>
           </tr>
         {% endfor %}
       </tbody>
     </div>
-    
   </body>
 </html>

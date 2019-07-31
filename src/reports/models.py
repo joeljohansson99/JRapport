@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 import os
+from django.utils import timezone
 
 class RapportQuerySet(models.query.QuerySet):
 
@@ -27,7 +28,7 @@ class Rapport(models.Model):
 	atgard	    = models.TextField(max_length=100,null=True, blank=True)
 	namn	    = models.TextField(max_length=100,null=True, blank=True)
 	anstNr	    = models.TextField(max_length=100,null=True, blank=True)
-	date		= models.DateTimeField(auto_now_add=True)
+	date		= models.DateTimeField(default=timezone.now)
 	file 		= models.FileField(upload_to='files', null=True, blank=True)
 
 	def __str__(self):

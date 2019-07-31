@@ -20,17 +20,19 @@ from django.conf.urls.static import static
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from reports.views import RapportListView
+from reports.views import RapportListView, EditListView
 from search.views import SearchRapportListView
 
 from .views import home_page
-from reports.views import add_report
+from reports.views import add_report, DeleteReport
 
 urlpatterns = [
     url(r'^', include('reports.urls', namespace='home'), name="home"),
     url(r'^add/', add_report, name="add_report"),
     url(r'^admin/', admin.site.urls),
-    url(r'^search/', include('search.urls', namespace='search'))
+    url(r'^search/', include('search.urls', namespace='search')),
+    url(r'^edit/', EditListView.as_view(), name="edit_report"),
+    url(r'^delete/(?P<pk>\d+)/$', DeleteReport.as_view(), name='delete_report'),
 ]
 
 if settings.DEBUG:
