@@ -63,7 +63,11 @@
       <tbody>
         {% for obj in object_list%}
           <tr>
-            <th scope="row"><a href="{{obj.file.url}}">{{obj.reportNr}}</a></th>
+            {% if obj.file %}
+              <th scope="row"><a href="{{obj.file.url}}">{{obj.reportNr}}</a></th>
+            {% else %}
+              <th scope="row">{{obj.reportNr}}</a></th>
+            {% endif%}
             <td><p>{{obj.avd}}</p></td>
             <td><p>{{obj.ritningNr}}</p></td>
             <td><p>{{obj.enhetsNr}}</p></td>
