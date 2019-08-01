@@ -1,22 +1,16 @@
 # JRapport
 
-1. Download and Install Python required version on your computer.
+1. Download and install Python on your computer
+2. Install pip if you're running Python 2. If you're running Python 3 it is included
+3. Create a virtual environment for project
+4. Set directory to local environment
+5. Activate the virtual enviroment in Command Prompt/Windows PowerShell
+6. Unzip the project in your local directory (where you created the local environment)
+7. Run the following command in cmd/powershell <pip install -r requirements.txt>
+8. Set directory to src (write cd src)
+9. Run the following commands in cmd/powershell
+<python manage.py makemigrations>
+<python manage.py migrate>
+<python manage.py runserver>
 
-2. Install pip if working on Python 2, pip is package manager of Python it comes along with Python 3 but not with Python 2.
-
-3. Read about virtualenv in Python. Create a virtual environment for your project.
-
-4. Activate the environment in cmd.
-
-5. Clone the GitHub project in your local directory with command: git clone https://github.com/jojjepojje/JRapport.git
-
-6. Run the command in console: pip install -r requirements.txt
-
-7. Go the the directory where Django project is present and manage.py file is present. (src)
-
-8. Run following commands in the cmd:
-  python manage.py makemigrations
-  python manage.py migrate
-  python manage.py runserver
-  
-9. See if your project is running on your local host http://127.0.0.1
+Check if project is running on your local host (paste http adress in browser)
