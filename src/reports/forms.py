@@ -2,6 +2,8 @@ from django import forms
 from reports.models import Rapport
 from django.forms import DateTimeInput
 
+
+
 class AddReportTypeForm(forms.Form):
 	avd = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control bars', 'placeholder':'R8'}))
 	ritningNr = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control bars', 'placeholder':'3-1711'}))

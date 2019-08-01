@@ -17,6 +17,7 @@ class RapportManager(models.Manager):
 		return self.get_queryset().active()
 
 
+#################  This model creates the objects ##############
 class Rapport(models.Model):
 
 	objects = RapportManager()
