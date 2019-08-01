@@ -16,3 +16,5 @@
 Check if project is running on your local host (paste http adress in browser)
 
 If you want to set it up on a local network you have to go into the file: settings.py and add your computers adress to ALLOWED_HOSTS
+
+If you want to create an admin account run the following commmand: python manage.py createsuperuser
