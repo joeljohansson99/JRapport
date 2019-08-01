@@ -8,9 +8,11 @@
 6. Unzip the project in your local directory (where you created the local environment)
 7. Run the following command in cmd/powershell <pip install -r requirements.txt>
 8. Set directory to src (write cd src)
-9. Run the following commands in cmd/powershell
-<python manage.py makemigrations>
-<python manage.py migrate>
-<python manage.py runserver>
+9. Run the following commands in cmd/powershell:
+  <python manage.py makemigrations>
+  <python manage.py migrate>
+  <python manage.py runserver>
 
 Check if project is running on your local host (paste http adress in browser)
+
+If you want to set it up on a local network you have to go into the file: settings.py and add your computers adress to ALLOWED_HOSTS
