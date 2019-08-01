@@ -1,3 +1,6 @@
+
+<!-- The search form for the main page -->
+
 <form class="form-inline" method="GET" action="search{% url 'home:query' %}">
 	<div>
 		<input class="form-control" type="search" placeholder="Sök" aria-label="Sök" name="q" value="{{ request.GET.q }}">

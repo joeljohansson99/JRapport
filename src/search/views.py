@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from reports.models import Rapport
 
+#### class and function to handle the search request and filter by request ####
+
 class SearchRapportListView(ListView):
 	template_name = "search.html"
 

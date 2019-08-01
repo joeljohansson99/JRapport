@@ -5,6 +5,8 @@ from django.db import models
 
 from .models import Rapport
 
+#### Displays the model reports for the admin site ####
+
 class RapportAdmin(admin.ModelAdmin):
 	list_display=['__str__']
 

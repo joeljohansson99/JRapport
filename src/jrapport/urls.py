@@ -20,11 +20,13 @@ from django.conf.urls.static import static
 from django.conf.urls import url, include
 from django.contrib import admin
 
+
 from reports.views import RapportListView, EditListView
 from search.views import SearchRapportListView
 
-from .views import home_page
 from reports.views import add_report, DeleteReport
+
+#### url patterns ####
 
 urlpatterns = [
     url(r'^', include('reports.urls', namespace='home'), name="home"),
@@ -34,6 +36,8 @@ urlpatterns = [
     url(r'^edit/', EditListView.as_view(), name="edit_report"),
     url(r'^delete/(?P<pk>\d+)/$', DeleteReport.as_view(), name='delete_report'),
 ]
+
+#### url pattern for uploading files ####
 
 if settings.DEBUG:
         urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

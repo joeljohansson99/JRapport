@@ -11,7 +11,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 
-
+#### Fetches and displays the reports ordered by the date reports points at ####
 class RapportListView(ListView):
 	queryset = Rapport.objects.all()
 	template_name = "home_page.html"
@@ -19,6 +19,8 @@ class RapportListView(ListView):
 	def get_queryset(self, *args, **kwargs):
 		request = self.request
 		return Rapport.objects.all().order_by('-date')
+
+#### function to handle and display the page where you add the reports ####
 
 def add_report(request):
 	queryset = Rapport.objects.all()
@@ -41,10 +43,15 @@ def add_report(request):
 			namn = form.cleaned_data.get("namn")
 			anstNr = form.cleaned_data.get("anstNr")
 			date = form.cleaned_data.get("date")
-			file = form.cleaned_data.get("file")
-			report = Rapport(reportNr=reportNr, avd=avd, ritningNr=ritningNr, enhetsNr=enhetsNr,
-			atgard=atgard, namn=namn, anstNr=anstNr, date=date, file=request.FILES['file'])
-			report.save()
+			if form.cleaned_data.get("file") is None:
+				report = Rapport(reportNr=reportNr, avd=avd, ritningNr=ritningNr, enhetsNr=enhetsNr,
+				atgard=atgard, namn=namn, anstNr=anstNr, date=date)
+				report.save()
+			else:
+				file = form.cleaned_data.get("file")
+				report = Rapport(reportNr=reportNr, avd=avd, ritningNr=ritningNr, enhetsNr=enhetsNr,
+				atgard=atgard, namn=namn, anstNr=anstNr, date=date, file=request.FILES['file'])
+				report.save()
 			return redirect('../')
 			context = {
 				"form":form,
@@ -60,6 +67,8 @@ def add_report(request):
 
 	return render(request, "add_report.html", context)
 
+#### delete reports if requested ####
+
 class DeleteReport(SuccessMessageMixin, DeleteView):
 	model = Rapport
 	success_url = '/'
@@ -71,6 +80,8 @@ class DeleteReport(SuccessMessageMixin, DeleteView):
 		# message = 'Rapport ' + request.session['reportNr'] + ' raderad.'
 		# messages.success(self.request, message)
 		return super(DeleteView, self).delete(request, *args, **kwargs)
+
+#### function to display the delete buttons ####
 
 class EditListView(ListView):
 	queryset = Rapport.objects.all()

@@ -17,7 +17,7 @@ class RapportManager(models.Manager):
 		return self.get_queryset().active()
 
 
-#################  This model creates the objects ##############
+#################  This model creates the forms and fetches the reports from queryset(above) ##############
 class Rapport(models.Model):
 
 	objects = RapportManager()
