@@ -15,7 +15,7 @@
 7. Go the the directory where Django project is present and manage.py file is present. (src)
 
 8. Run following commands in the cmd:
-  python manage.py make migrations
+  python manage.py makemigrations
   python manage.py migrate
   python manage.py runserver
   
